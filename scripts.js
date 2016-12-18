@@ -1,5 +1,3 @@
-
-
 //Event Listeners
 
 $('.save-btn').on('click', function(e) {
