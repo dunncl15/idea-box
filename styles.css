@@ -75,7 +75,7 @@ input[placeholder] {
 .search-section {
   width: 80%;
   margin: 0 auto;
-  padding: .5em 0 0 0;
+  padding: .5em 0;
 }
 
 /** Idea Container **/
@@ -88,8 +88,44 @@ input[placeholder] {
   text-align: left;
 }
 
-.vote-icon,
-.delete-icon {
+.idea-title {
+  margin-bottom: 10px;
+  color: #6D6E71;
+  font-size: 1.25em;
+}
+
+.idea-body {
+  margin-bottom: 10px;
+  color: #939598;
+  font-weight: 300;
+}
+
+.vote-icon-wrap {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.vote-icon {
+  margin-right: 10px;
   width: 20px;
-  height: 20px
+  height: 20px;
+  cursor: pointer;
+}
+
+.delete-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.quality {
+  margin: 0 8px;
+  color: #6D6E71;
+}
+
+.quality-value {
+  color: #6D6E71;
 }
