@@ -14,18 +14,24 @@ h1 {
   font-size: 3em;
   font-weight: 700;
   text-align: center;
-  margin: .75em 0;
+  padding: .75em 0;
 }
 
 section {
   margin: .5em auto;
-  width: 80%;
+  /*width: 80%;*/
   text-align: center;
 }
 
 button,
 input {
-  width: 80%;
+  margin: 0 0 1em 0;
+  padding: .25em 0;
+  width: 70%;
+}
+
+input[placeholder] {
+  font-size: 1em;
 }
 
 /** Layout Styles **/
@@ -33,4 +39,29 @@ input {
 .wrapper {
   width: 100%;
   margin: 0 auto;
+}
+
+.form-section {
+  margin: 0;
+  background-color: #E5F3F2;
+}
+
+.title-teal {
+  color: #00A79D;
+}
+
+.title-grey {
+  color: #6D6E71;
+}
+
+.save-btn {
+  background-color: #00A79D;
+  border-style: none;
+  color: #FFF;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.save-btn:hover {
+  background-color: #045E55;
 }
