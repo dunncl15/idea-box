@@ -14,7 +14,7 @@ h1 {
   font-size: 3em;
   font-weight: 700;
   text-align: center;
-  padding: .75em 0;
+  padding: .5em 0;
 }
 
 section {
@@ -30,6 +30,11 @@ input {
   width: 70%;
 }
 
+input {
+  outline-color: #E5F3F2;
+  color: #6D6E71;
+}
+
 input[placeholder] {
   font-size: 1em;
 }
@@ -43,6 +48,7 @@ input[placeholder] {
 
 .form-section {
   margin: 0;
+  padding: .25em 0;
   background-color: #E5F3F2;
 }
 
@@ -64,4 +70,26 @@ input[placeholder] {
 
 .save-btn:hover {
   background-color: #045E55;
+}
+
+.search-section {
+  width: 80%;
+  margin: 0 auto;
+  padding: .5em 0 0 0;
+}
+
+/** Idea Container **/
+
+.idea-container {
+  position: relative;
+  margin: 0 auto;
+  width: 80%;
+  border-bottom: 1px solid #D1D3D4;
+  text-align: left;
+}
+
+.vote-icon,
+.delete-icon {
+  width: 20px;
+  height: 20px
 }
