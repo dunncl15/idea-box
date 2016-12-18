@@ -7,6 +7,7 @@
 
 body {
   font-family: 'Open Sans', serif;
+  background-color: lightgrey;
 }
 
 h1 {
@@ -19,7 +20,6 @@ h1 {
 
 section {
   margin: .5em auto;
-  /*width: 80%;*/
   text-align: center;
 }
 
@@ -42,7 +42,7 @@ input[placeholder] {
 /** Layout Styles **/
 
 .wrapper {
-  width: 100%;
+  max-width: 1024px;
   margin: 0 auto;
 }
 
@@ -73,9 +73,15 @@ input[placeholder] {
 }
 
 .search-section {
-  width: 80%;
   margin: 0 auto;
-  padding: .5em 0;
+  padding: 1em 0;
+  background-color: #FFF;
+}
+
+.idea-section {
+  margin: 0 auto;
+  padding: 0 0 1em 0;
+  background-color: #FFF;
 }
 
 /** Idea Container **/
@@ -83,13 +89,14 @@ input[placeholder] {
 .idea-container {
   position: relative;
   margin: 0 auto;
-  width: 80%;
+  width: 70%;
   border-bottom: 1px solid #D1D3D4;
   text-align: left;
 }
 
 .idea-title {
   margin-bottom: 10px;
+  width: 80%;
   color: #6D6E71;
   font-size: 1.25em;
 }
