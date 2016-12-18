@@ -3,24 +3,31 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Idea Box</title>
+    <title>ideabox</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab:700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="reset.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
   <body>
-    <section>
-      <form>
-        <input id="user-title" type="text" name="title" placeholder="Title"><br>
-        <input id="user-idea" type="text" name="body" placeholder="Body"><br>
-        <button class="save-btn">Save</button><br>
-      </form>
-    </section>
-    <input type="search" name="search" placeholder="Search">
-    <section class="idea-catalog">
-      <div class="idea">
-        <p>Idea Title</p>
-        <p>Idea Body</p>
-      </div>
-    </section>
+    <div class="wrapper">
+      <section class="form-section">
+        <form>
+          <h1><span>idea</span><span>box</span></h1>
+          <input id="user-title" type="text" name="title" placeholder="Title"><br>
+          <input id="user-idea" type="text" name="body" placeholder="Body"><br>
+          <button class="save-btn">Save</button><br>
+        </form>
+      </section>
+      <section class="search-section">
+        <input type="search" name="search" placeholder="Search">
+      </section>
+      <section class="idea-section">
+        <!-- <div class="idea">
+          <p>Idea Title</p>
+          <p>Idea Body</p>
+        </div> -->
+      </section>
+    </div>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   </body>
 </html>
