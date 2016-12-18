@@ -96,7 +96,7 @@ input[placeholder] {
 
 .idea-title {
   margin-bottom: 10px;
-  width: 80%;
+  /*width: 80%;*/
   color: #6D6E71;
   font-size: 1.25em;
 }
@@ -105,6 +105,7 @@ input[placeholder] {
   margin-bottom: 10px;
   color: #939598;
   font-weight: 300;
+  overflow: scroll;
 }
 
 .vote-icon-wrap {
