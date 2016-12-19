@@ -1,8 +1,17 @@
+//Global Variables
+var userIdea = {};
+var stringifiedIdea;
+var retrieveIdea;
+var parsedIdea;
+
 //Event Listeners
 
 $('.save-btn').on('click', function(e) {
   e.preventDefault();
   getIdea();
+  stringifyIdea();
+  storeIdea();
+  parseIdea();
   clearInputs();
 });
 
@@ -23,8 +32,8 @@ $('.idea-section').on('click', '.upvote-btn', function() {
 
 //Functions
 
-function addIdea(title, body) {
-  $('.idea-section').prepend(`<div class="idea-container">
+function addIdea(title, body, id) {
+  $('.idea-section').prepend(`<div id="${id}" class="idea-container">
    <textarea class="idea-title">${title}</textarea>
    <textarea class="idea-body">${body}</textarea>
    <button class="delete-btn"></button>
@@ -40,9 +49,26 @@ function addIdea(title, body) {
 function getIdea() {
   var ideaTitle = $('.user-title').val();
   var ideaBody = $('.user-body').val();
-  var userIdea = new Idea(ideaTitle, ideaBody);
-  addIdea(ideaTitle, ideaBody);
+  var id = Date.now();
+  userIdea = new Idea(ideaTitle, ideaBody, id);
+  addIdea(ideaTitle, ideaBody, id);
   console.log(userIdea)
+}
+
+function stringifyIdea() {
+  stringifiedIdea = JSON.stringify(userIdea);
+  return stringifiedIdea;
+}
+
+function storeIdea() {
+  localStorage.setItem('id', stringifiedIdea);
+  retrieveIdea = localStorage.getItem('id');
+  return retrieveIdea;
+}
+
+function parseIdea() {
+  parsedIdea = JSON.parse(retrieveIdea);
+  return parsedIdea;
 }
 
 function clearInputs() {
@@ -50,8 +76,9 @@ function clearInputs() {
   $('.user-body').val('');
 }
 
-function Idea(title, body) {
+function Idea(title, body, id) {
   this.title = title;
   this.body = body;
   this.quality = 'swill';
+  this.id = id;
 }
