@@ -16,19 +16,20 @@ $('.save-btn').on('click', function(e) {
 });
 
 $('.idea-section').on('click', '.upvote-btn', function() {
-  console.log(this)
-  var voteStatus = $('.quality-value').text();
+  var voteStatus = $('.quality-value');
 
-  if ($('voteStatus').text('swill')) {
-    $('voteStatus').text('plausible');
-  }
-  //  } else if ($('voteStatus').text('plausible')) {
-  //   $('voteStatus').text('genius');
-  // } else if ($('voteStatus').text('genius')) {
-  //   $('voteStatus').text('genius');
+  // if ($(voteStatus).text('swill')) {
+  //    $(voteStatus).text('plausible');
   // }
+
+   if ($(voteStatus).text('plausible')) {
+     $(voteStatus).text('genius');
+    }
 })
 
+$('.idea-section').on('click', '.delete-btn', function() {
+  $(this).closest('.idea-container').remove();
+})
 
 //Functions
 
