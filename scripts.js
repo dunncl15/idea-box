@@ -25,11 +25,21 @@ $('.save-btn').on('click', function(e) {
 
 $('.idea-section').on('click', '.upvote-btn', function() {
   var voteStatus = $(this).siblings('.quality-value').text();
-  console.log(voteStatus);
   if (voteStatus === 'swill') {
     $(this).siblings('.quality-value').text('plausible');
   } else if (voteStatus === 'plausible') {
     $(this).siblings('.quality-value').text('genius')
+  }
+})
+
+//Downvote Button Click Event
+
+$('.idea-section').on('click', '.downvote-btn', function() {
+  var voteStatus = $(this).siblings('.quality-value').text();
+  if (voteStatus === 'genius') {
+    $(this).siblings('.quality-value').text('plausible');
+  } else if (voteStatus === 'plausible') {
+    $(this).siblings('.quality-value').text('swill');
   }
 })
 
@@ -78,19 +88,3 @@ function clearInputs() {
   $('.user-title').val('');
   $('.user-body').val('');
 }
-
-// function stringifyIdea() {
-//   stringifiedIdea = JSON.stringify(userIdea);
-//   return stringifiedIdea;
-// }
-//
-// function storeIdea() {
-//   localStorage.setItem(idea.id, stringifiedIdea);
-//   retrieveIdea = localStorage.getItem(idea.id);
-//   return retrieveIdea;
-// }
-//
-// function parseIdea() {
-//   parsedIdea = JSON.parse(retrieveIdea);
-//   return parsedIdea;
-// }
