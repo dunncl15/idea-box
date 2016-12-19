@@ -4,45 +4,63 @@ var stringifiedIdea;
 var retrieveIdea;
 var parsedIdea;
 
+$(document).ready(function() {
+  for (var i = 0; i < localStorage.length; i++) {
+    var ideaObject = JSON.parse(localStorage.getItem(localStorage.key(i)));
+    addIdea(ideaObject);
+  }
+})
+
 //Event Listeners
+
+//Save Button Click Event
 
 $('.save-btn').on('click', function(e) {
   e.preventDefault();
   getIdea();
-  stringifyIdea();
-  storeIdea();
-  parseIdea();
   clearInputs();
 });
 
+//Upvote Click Event
+
 $('.idea-section').on('click', '.upvote-btn', function() {
-  var voteStatus = $('.quality-value');
-
-  // if ($(voteStatus).text('swill')) {
-  //    $(voteStatus).text('plausible');
-  // }
-
-   if ($(voteStatus).text('plausible')) {
-     $(voteStatus).text('genius');
-    }
+  var voteStatus = $(this).siblings('.quality-value').text();
+  console.log(voteStatus);
+  if (voteStatus === 'swill') {
+    $(this).siblings('.quality-value').text('plausible');
+  } else if (voteStatus === 'plausible') {
+    $(this).siblings('.quality-value').text('genius')
+  }
 })
+
+//Delete Button Click Event
 
 $('.idea-section').on('click', '.delete-btn', function() {
   $(this).closest('.idea-container').remove();
+  var idKey = $(this).closest('.idea-container').attr('id');
+  console.log(idKey);
+  localStorage.removeItem(idKey);
 })
 
 //Functions
 
-function addIdea(title, body, id) {
-  $('.idea-section').prepend(`<div id="${id}" class="idea-container">
-   <textarea class="idea-title">${title}</textarea>
-   <textarea class="idea-body">${body}</textarea>
+function Idea(title, body) {
+  this.title = title;
+  this.body = body;
+  this.quality = 'swill';
+  this.id = Date.now();
+}
+
+function addIdea(idea) {
+  $('.idea-section').prepend(`<div id="${idea.id}" class="idea-container">
+   <textarea class="idea-title">${idea.title}</textarea>
+   <textarea class="idea-body">${idea.body}</textarea>
    <button class="delete-btn"></button>
    <div class="vote-icon-wrap">
      <button class="upvote-btn"></button>
      <button class="downvote-btn"></button>
      <p class="quality">quality:</p>
-     <p class="quality-value"> swill</p>
+     <p class="quality-value">${idea.quality}</p>
     </div>
   </div>`);
 }
@@ -50,26 +68,10 @@ function addIdea(title, body, id) {
 function getIdea() {
   var ideaTitle = $('.user-title').val();
   var ideaBody = $('.user-body').val();
-  var id = Date.now();
-  userIdea = new Idea(ideaTitle, ideaBody, id);
-  addIdea(ideaTitle, ideaBody, id);
+  userIdea = new Idea(ideaTitle, ideaBody);
+  addIdea(userIdea);
+  localStorage.setItem(userIdea.id, JSON.stringify(userIdea));
   console.log(userIdea)
-}
-
-function stringifyIdea() {
-  stringifiedIdea = JSON.stringify(userIdea);
-  return stringifiedIdea;
-}
-
-function storeIdea() {
-  localStorage.setItem('id', stringifiedIdea);
-  retrieveIdea = localStorage.getItem('id');
-  return retrieveIdea;
-}
-
-function parseIdea() {
-  parsedIdea = JSON.parse(retrieveIdea);
-  return parsedIdea;
 }
 
 function clearInputs() {
@@ -77,9 +79,18 @@ function clearInputs() {
   $('.user-body').val('');
 }
 
-function Idea(title, body, id) {
-  this.title = title;
-  this.body = body;
-  this.quality = 'swill';
-  this.id = id;
-}
+// function stringifyIdea() {
+//   stringifiedIdea = JSON.stringify(userIdea);
+//   return stringifiedIdea;
+// }
+//
+// function storeIdea() {
+//   localStorage.setItem(idea.id, stringifiedIdea);
+//   retrieveIdea = localStorage.getItem(idea.id);
+//   return retrieveIdea;
+// }
+//
+// function parseIdea() {
+//   parsedIdea = JSON.parse(retrieveIdea);
+//   return parsedIdea;
+// }
