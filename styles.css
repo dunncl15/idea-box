@@ -25,11 +25,10 @@ section {
 
 input {
   margin: 0 0 1em 0;
-  padding: .25em 0;
+  padding: .25em;
   width: 70%;
   border: 1px solid lightgrey;
-  color: #6D6E71;
-  outline-color: #E5F3F2;
+  border-radius: 2px;
 }
 
 input[placeholder] {
@@ -66,7 +65,19 @@ textarea {
 }
 
 .user-body {
-  height: 5em;
+  padding: .25em;
+  width: 70%;
+  margin: 0 0 1em 0;
+  border: 1px solid lightgrey;
+  border-radius: 2px;
+}
+
+.user-body:focus,
+input:focus {
+  border-style: none;
+  outline-style: solid;
+  outline-color: #00A79D;
+  outline-width: 1.75px;
 }
 
 .save-btn {
