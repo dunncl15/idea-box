@@ -7,35 +7,38 @@
 
 body {
   font-family: 'Open Sans', serif;
-  background-color: lightgrey;
 }
 
 h1 {
   font-family: 'Roboto Slab', serif;
-  font-size: 3em;
+  font-size: 2.75em;
   font-weight: 700;
   text-align: center;
   padding: .5em 0;
 }
 
-section {
-  margin: .5em auto;
-  text-align: center;
-}
-
 input {
-  margin: 0 0 1em 0;
-  padding: .25em;
+  display: block;
+  margin: 0 auto 1em auto;
+  padding: .5em .25em;
   width: 70%;
   border: 1px solid lightgrey;
   border-radius: 2px;
+  color: #6D6E71;
 }
 
-input[placeholder] {
+input[placeholder],
+textarea[placeholder] {
   font-size: 1em;
 }
 
-textarea {
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.idea-title,
+.idea-body {
   width: 100%;
   border-style: none;
   font-size: 1em;
@@ -51,8 +54,6 @@ textarea {
 }
 
 .form-section {
-  margin: 0;
-  padding: .25em 0;
   background-color: #E5F3F2;
 }
 
@@ -67,9 +68,11 @@ textarea {
 .user-body {
   padding: .25em;
   width: 70%;
-  margin: 0 0 1em 0;
+  margin: 0 auto 1em auto;
   border: 1px solid lightgrey;
   border-radius: 2px;
+  color: #6D6E71;
+  resize: none;
 }
 
 .user-body:focus,
@@ -81,10 +84,12 @@ input:focus {
 }
 
 .save-btn {
+  display: block;
   padding: .5em 0;
   width: 70%;
-  margin-bottom: 1em;
+  margin: 0 auto 1.5em auto;
   background-color: #00A79D;
+  border-radius: 2px;
   border-style: none;
   color: #FFF;
   cursor: pointer;
@@ -101,11 +106,8 @@ input:focus {
 .search-section {
   margin: 0 auto;
   padding: 1em 0;
+  width: 100%;
   background-color: #FFF;
-}
-
-.search-field {
-  padding: .25em 0;
 }
 
 /** Idea Section **/
@@ -197,3 +199,21 @@ input:focus {
 .quality-value {
   color: #6D6E71;
 }
+
+
+@media screen and (min-width: 1024px) {
+
+    body {
+      background-color: lightgrey;
+    }
+
+    h1 {
+      font-size: 3em;
+    }
+
+    .wrapper {
+      flex-direction: column;
+      overflow: auto;
+    }
+
+  }
