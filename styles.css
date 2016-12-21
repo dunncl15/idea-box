@@ -97,12 +97,16 @@ input:focus {
   outline: none;
 }
 
+.save-btn:hover {
+  background-color: #045E55;
+}
+
 .save-btn:disabled {
   background-color: lightgrey;
 }
 
-.save-btn:hover {
-  background-color: #045E55;
+.save-btn:disabled:hover {
+  background-color: lightgrey;
 }
 
 /** Search Section **/
