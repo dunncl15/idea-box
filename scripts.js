@@ -70,7 +70,6 @@ $('.idea-section').on('click', '.delete-btn', function() {
 //Blur Event
 
 $('.idea-section').on('blur', '.idea-title, .idea-body', function() {
-
   var id = $(this).parent('.idea-container').attr('id');
   var storedObject = JSON.parse(localStorage.getItem(id));
   var currentTitle = $('.idea-title').val();
@@ -93,7 +92,6 @@ $('.search-field').on('keyup', function() {
   })
 })
 
-
 //Functions
 
 function Idea(title, body) {
@@ -101,6 +99,14 @@ function Idea(title, body) {
   this.body = body;
   this.quality = 'swill';
   this.id = Date.now();
+}
+
+function getIdea() {
+  var ideaTitle = $('.user-title').val();
+  var ideaBody = $('.user-body').val();
+  var userIdea = new Idea(ideaTitle, ideaBody);
+  addIdea(userIdea);
+  sendToStorage(userIdea.id, userIdea);
 }
 
 function addIdea(idea) {
@@ -116,14 +122,6 @@ function addIdea(idea) {
      <p class="quality-value">${idea.quality}</p>
    </div>
   </div>`);
-}
-
-function getIdea() {
-  var ideaTitle = $('.user-title').val();
-  var ideaBody = $('.user-body').val();
-  var userIdea = new Idea(ideaTitle, ideaBody);
-  addIdea(userIdea);
-  sendToStorage(userIdea.id, userIdea);
 }
 
 function sendToStorage(id, object) {
