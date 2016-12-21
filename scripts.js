@@ -1,4 +1,3 @@
-var userIdea = {};
 
 $(document).ready(function() {
   for (var i = 0; i < localStorage.length; i++) {
@@ -29,8 +28,12 @@ $('.idea-section').on('click', '.upvote-btn', function() {
   }
 
   var id = $(this).closest('.idea-container').attr('id');
-  console.log(id);
-  localStorage.setItem(id, JSON.stringify(userIdea));
+  var storedObject = JSON.parse(localStorage.getItem(id));
+
+  var currentQuality = $(this).siblings('.quality-value').text();
+  storedObject.quality = currentQuality;
+
+  localStorage.setItem(id, JSON.stringify(storedObject));
 })
 
 //Downvote Button Click Event
@@ -39,20 +42,37 @@ $('.idea-section').on('click', '.downvote-btn', function() {
   var voteStatus = $(this).siblings('.quality-value').text();
   if (voteStatus === 'genius') {
     $(this).siblings('.quality-value').text('plausible');
-
   } else if (voteStatus === 'plausible') {
     $(this).siblings('.quality-value').text('swill');
   }
+
+  var id = $(this).closet('.idea-container').attr('id');
+  console.log(id);
+
 })
 
 //Delete Button Click Event
 
 $('.idea-section').on('click', '.delete-btn', function() {
-  $(this).closest('.idea-container').remove();
-  var key = $(this).closest('.idea-container').attr('id');
+  $(this).parent('.idea-container').remove();
+  var key = $(this).parent('.idea-container').attr('id');
   console.log(key);
   localStorage.removeItem(key);
 })
+
+//Search Field
+
+$('.search-field').on('keyup', function() {
+  var searchInput = $(this).val().toLowerCase();
+  var ideaBoxes = $('.idea-container');
+
+  ideaBoxes.each(function(i, ideaBox) {
+    var ideaText = $(ideaBox).text().toLowerCase();
+    var matchedIdea = !!ideaText.match(searchInput);
+    $(ideaBox).toggle(matchedIdea);
+  })
+})
+
 
 //Functions
 
@@ -64,7 +84,8 @@ function Idea(title, body) {
 }
 
 function addIdea(idea) {
-  $('.idea-section').prepend(`<div id="${idea.id}" class="idea-container">
+  $('.idea-section').prepend(`
+  <div id="${idea.id}" class="idea-container">
    <textarea class="idea-title">${idea.title}</textarea>
    <textarea class="idea-body">${idea.body}</textarea>
    <button class="delete-btn"></button>
@@ -73,17 +94,23 @@ function addIdea(idea) {
      <button class="downvote-btn"></button>
      <p class="quality">quality:</p>
      <p class="quality-value">${idea.quality}</p>
-    </div>
+   </div>
   </div>`);
 }
 
 function getIdea() {
   var ideaTitle = $('.user-title').val();
   var ideaBody = $('.user-body').val();
-  userIdea = new Idea(ideaTitle, ideaBody);
+  var userIdea = new Idea(ideaTitle, ideaBody);
   addIdea(userIdea);
-  localStorage.setItem(userIdea.id, JSON.stringify(userIdea));
+  sendToStorage(userIdea.id, userIdea);
+
+  // localStorage.setItem(userIdea.id, JSON.stringify(userIdea));
   console.log(userIdea)
+}
+
+function sendToStorage(id, object) {
+  localStorage.setItem(id, JSON.stringify(object));
 }
 
 function clearInputs() {
