@@ -46,9 +46,13 @@ $('.idea-section').on('click', '.downvote-btn', function() {
     $(this).siblings('.quality-value').text('swill');
   }
 
-  var id = $(this).closet('.idea-container').attr('id');
-  console.log(id);
+  var id = $(this).closest('.idea-container').attr('id');
+  var storedObject = JSON.parse(localStorage.getItem(id));
 
+  var currentQuality = $(this).siblings('.quality-value').text();
+  storedObject.quality = currentQuality;
+
+  localStorage.setItem(id, JSON.stringify(storedObject));
 })
 
 //Delete Button Click Event
@@ -105,7 +109,6 @@ function getIdea() {
   addIdea(userIdea);
   sendToStorage(userIdea.id, userIdea);
 
-  // localStorage.setItem(userIdea.id, JSON.stringify(userIdea));
   console.log(userIdea)
 }
 
