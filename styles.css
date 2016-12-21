@@ -37,15 +37,6 @@ form {
   flex-direction: column;
 }
 
-.idea-title,
-.idea-body {
-  width: 100%;
-  border-style: none;
-  font-size: 1em;
-  outline: none;
-  resize: none;
-}
-
 /** Layout Styles **/
 
 .wrapper {
@@ -57,12 +48,36 @@ form {
   background-color: #E5F3F2;
 }
 
+.search-section {
+  margin: 0 auto;
+  padding: 1em 0;
+  width: 100%;
+  background-color: #FFF;
+}
+
+.idea-section {
+  margin: 0 auto;
+  padding: 0 0 1em 0;
+  background-color: #FFF;
+}
+
+/** Form Section Styles **/
+
 .title-teal {
   color: #00A79D;
 }
 
 .title-grey {
   color: #6D6E71;
+}
+
+.idea-title,
+.idea-body {
+  width: 100%;
+  border-style: none;
+  font-size: 1em;
+  outline: none;
+  resize: none;
 }
 
 .user-body {
@@ -80,7 +95,7 @@ input:focus {
   border-style: none;
   outline-style: solid;
   outline-color: #00A79D;
-  outline-width: 1.75px;
+  outline-width: 2px;
 }
 
 .save-btn {
@@ -107,23 +122,6 @@ input:focus {
 
 .save-btn:disabled:hover {
   background-color: lightgrey;
-}
-
-/** Search Section **/
-
-.search-section {
-  margin: 0 auto;
-  padding: 1em 0;
-  width: 100%;
-  background-color: #FFF;
-}
-
-/** Idea Section **/
-
-.idea-section {
-  margin: 0 auto;
-  padding: 0 0 1em 0;
-  background-color: #FFF;
 }
 
 /** Idea Container **/
@@ -217,11 +215,6 @@ input:focus {
 
     h1 {
       font-size: 3em;
-    }
-
-    .wrapper {
-      flex-direction: column;
-      overflow: auto;
     }
 
   }
