@@ -1,5 +1,6 @@
 
 $(document).ready(function() {
+  $('.save-btn').prop('disabled', true);
   for (var i = 0; i < localStorage.length; i++) {
     var ideaObject = JSON.parse(localStorage.getItem(localStorage.key(i)));
     addIdea(ideaObject);
@@ -9,7 +10,11 @@ $(document).ready(function() {
 //Event Listeners
 
 $('.user-title').on('keyup', function() {
-  btnState();
+  if ($(this).val() !== '') {
+    $('.save-btn').prop('disabled', false);
+  } else {
+    $('.save-btn').prop('disabled', true);
+  }
 })
 
 //Save Button Click Event
@@ -129,13 +134,3 @@ function clearInputs() {
   $('.user-title').val('');
   $('.user-body').val('');
 }
-
-// function btnState() {
-//   var titleInput = $('.user-title').val();
-//   var bodyInput = $('.user-body').val();
-//   if (titleInput !== "" && bodyInput !== "") {
-//     $('.save-btn').prop('disabled', false);
-//   } else {
-//     $('.save-btn').prop('disabled');
-//   }
-// }
