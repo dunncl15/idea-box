@@ -8,6 +8,10 @@ $(document).ready(function() {
 
 //Event Listeners
 
+$('.user-title').on('keyup', function() {
+  btnState();
+})
+
 //Save Button Click Event
 
 $('.save-btn').on('click', function(e) {
@@ -97,8 +101,8 @@ function Idea(title, body) {
 function addIdea(idea) {
   $('.idea-section').prepend(`
   <div id="${idea.id}" class="idea-container">
-   <textarea class="idea-title" contenteditable="true">${idea.title}</textarea>
-   <textarea class="idea-body" contenteditable="true">${idea.body}</textarea>
+   <textarea class="idea-title">${idea.title}</textarea>
+   <textarea class="idea-body">${idea.body}</textarea>
    <button class="delete-btn"></button>
    <div class="vote-icon-wrap">
      <button class="upvote-btn"></button>
@@ -125,3 +129,13 @@ function clearInputs() {
   $('.user-title').val('');
   $('.user-body').val('');
 }
+
+// function btnState() {
+//   var titleInput = $('.user-title').val();
+//   var bodyInput = $('.user-body').val();
+//   if (titleInput !== "" && bodyInput !== "") {
+//     $('.save-btn').prop('disabled', false);
+//   } else {
+//     $('.save-btn').prop('disabled');
+//   }
+// }
